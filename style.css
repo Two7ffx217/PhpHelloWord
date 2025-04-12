@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: black;
+    color: white;
     margin: 0;
     padding: 0;
 }
@@ -17,7 +17,7 @@ body {
 
 h1.title {
     text-align: center;
-    color: #4CAF50;
+    color: red;
 }
 
 form.task-form {
