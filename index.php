@@ -1,8 +1,5 @@
 <?php
-  session_start();
-  if(!isset($_SESSION['tasks'])) {
-      $_SESSION['tasks'] = [];
-  }
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -11,11 +8,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tarefas</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1 class="title">Bem-vindo à Lista de Tarefas</h1>
+
+        <!-- Feedback de status -->
+        <?php
+        if (isset($_GET['status'])) {
+            $status = $_GET['status'];
+            if ($status == 'task_added') {
+                echo '<p>Tarefa adicionada com sucesso!</p>';
+            } elseif ($status == 'task_removed') {
+                echo '<p>Tarefa removida com sucesso!</p>';
+            } elseif ($status == 'task_empty') {
+                echo '<p>Erro: A tarefa não pode ser vazia.</p>';
+            }
+        }
+        ?>
 
         <form action="tasks.php" method="POST" class="task-form">
             <input type="text" name="task" placeholder="Adicione uma nova tarefa..." required>
