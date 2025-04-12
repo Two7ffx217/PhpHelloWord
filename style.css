@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: black;
-    color: white;
+    background-color: #000; /* Fundo preto */
+    color: #fff; /* Texto branco */
     margin: 0;
     padding: 0;
 }
@@ -9,15 +9,15 @@ body {
 .container {
     max-width: 600px;
     margin: 50px auto;
-    background-color: #fff;
+    background-color: #333; /* Fundo escuro para o container */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 h1.title {
     text-align: center;
-    color: red;
+    color: #4CAF50; /* Cor verde para o título "Bem-vindo" */
 }
 
 form.task-form {
@@ -37,7 +37,7 @@ form input[type="text"] {
 form button {
     width: 15%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #FFA500; /* Cor laranja para o botão */
     border: none;
     color: white;
     font-size: 16px;
@@ -46,7 +46,11 @@ form button {
 }
 
 form button:hover {
-    background-color: #45a049;
+    background-color: #ff8c00; /* Cor mais escura de laranja no hover */
+}
+
+.task-list h2 {
+    color: white; /* Cor branca para o título "Minhas Tarefas" */
 }
 
 .task-list ul {
@@ -55,20 +59,25 @@ form button:hover {
 }
 
 .task-list li {
-    background-color: #f9f9f9;
+    background-color: #444; /* Fundo escuro para as tarefas */
     margin: 10px 0;
     padding: 10px;
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
+    color: white; /* Texto branco para as tarefas */
 }
 
 .remove-task {
-    color: red;
+    color: red; /* Cor vermelha para o botão X */
     text-decoration: none;
     font-size: 18px;
 }
 
 .remove-task:hover {
-    color: darkred;
+    color: darkred; /* Cor mais escura de vermelho no hover */
+}
+
+.task-list p {
+    color: white; /* Cor branca para a mensagem "Você ainda não tem tarefas" */
 }
