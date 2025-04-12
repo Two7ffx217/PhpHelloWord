@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #1b2561; 
+    background-color: #cadf12; 
     color: #fff; 
     margin: 0;
     padding: 0;
@@ -59,7 +59,7 @@ form button:hover {
 }
 
 .task-list li {
-    background-color: #444;
+    background-color: black;
     margin: 10px 0;
     padding: 10px;
     border-radius: 4px;
