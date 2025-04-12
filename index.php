@@ -1,5 +1,23 @@
 <?php
 session_start();
+
+// Adiciona tarefa
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['task'])) {
+    $task = trim($_POST['task']);
+    if (!empty($task)) {
+        $_SESSION['tasks'][] = $task;
+    }
+}
+
+// Remove tarefa
+if (isset($_GET['remove'])) {
+    $index = (int)$_GET['remove'];
+    if (isset($_SESSION['tasks'][$index])) {
+        unset($_SESSION['tasks'][$index]);
+        $_SESSION['tasks'] = array_values($_SESSION['tasks']); // Reindexa o array
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -8,27 +26,14 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tarefas</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Aqui, assume-se que style.css está na mesma pasta -->
 </head>
 <body>
     <div class="container">
         <h1 class="title">Bem-vindo à Lista de Tarefas</h1>
 
-        <!-- Feedback de status -->
-        <?php
-        if (isset($_GET['status'])) {
-            $status = $_GET['status'];
-            if ($status == 'task_added') {
-                echo '<p>Tarefa adicionada com sucesso!</p>';
-            } elseif ($status == 'task_removed') {
-                echo '<p>Tarefa removida com sucesso!</p>';
-            } elseif ($status == 'task_empty') {
-                echo '<p>Erro: A tarefa não pode ser vazia.</p>';
-            }
-        }
-        ?>
-
-        <form action="tasks.php" method="POST" class="task-form">
+        <!-- Formulário para adicionar tarefa -->
+        <form action="index.php" method="POST" class="task-form">
             <input type="text" name="task" placeholder="Adicione uma nova tarefa..." required>
             <button type="submit">Adicionar Tarefa</button>
         </form>
@@ -42,7 +47,7 @@ session_start();
                     <?php foreach($_SESSION['tasks'] as $index => $task): ?>
                         <li>
                             <?php echo htmlspecialchars($task); ?>
-                            <a href="tasks.php?remove=<?php echo $index; ?>" class="remove-task">❌</a>
+                            <a href="index.php?remove=<?php echo $index; ?>" class="remove-task">❌</a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
